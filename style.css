@@ -94,7 +94,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .nav-links a {
   font-family: 'mundial-narrow-variable', 'Arial Narrow', Arial, sans-serif;
-  font-size: 22px;
+  font-size: 18px;
   color: var(--amber);
   font-weight: 400;
   white-space: nowrap;
@@ -107,21 +107,25 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   gap: 28px;
 }
-.nav-social img { width: 34px; height: 34px; }
+.nav-social img { width: 24px; height: 24px; }
 .nav-social-icon { display: flex; align-items: center; opacity: 0.5; cursor: default; }
 .btn-contact {
-  background: var(--amber);
-  color: var(--cream);
+  background: transparent;
+  color: var(--amber);
   font-family: var(--font-condensed);
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 400;
-  padding: 8px 16px;
-  border-radius: 10px;
+  padding: 6px 6px;
+  border-radius: 999px;
+  border: 1.5px solid var(--amber);
   white-space: nowrap;
   margin-left: 16px;
-  transition: opacity 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
-.btn-contact:hover { opacity: 0.85; }
+.btn-contact:hover {
+  background: var(--amber);
+  color: var(--cream);
+}
 
 /* Hero content */
 .hero-content {
@@ -134,7 +138,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-title {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 45%;
   transform: translate(-50%, -50%);
   font-family: var(--font-display);
   font-weight: 700;
@@ -150,8 +154,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .hero-photo {
   position: absolute;
-  left: 200px;
-  top: -70px;
+  left: 75px;
+  top: -225px;
   height: 110%;
   max-height: 760px;
   width: auto;
@@ -447,6 +451,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .contact-title {
   font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
   font-size: clamp(100px, 14vw, 200px);
   color: var(--cream);
   white-space: nowrap;
