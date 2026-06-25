@@ -3,8 +3,8 @@
   --cream: #fffbed;
   --amber: #ffac01;
   --cream-80: rgba(255, 251, 237, 0.8);
-  --font-display: 'Anton', Impact, sans-serif;
-  --font-condensed: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+  --font-display: 'hatch-sans', Impact, sans-serif;
+  --font-condensed: 'mundial-narrow-variable', 'Arial Narrow', Arial, sans-serif;
   --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -71,16 +71,21 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero {
   background: var(--cream);
   min-height: 100vh;
+  padding-top: 58px;
 }
 
 /* Nav */
 .nav {
-  position: relative;
-  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 30px 85px;
+  padding: 10px 85px;
+  background: var(--cream);
 }
 .nav-links {
   display: flex;
@@ -88,7 +93,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 36px;
 }
 .nav-links a {
-  font-family: var(--font-condensed);
+  font-family: 'mundial-narrow-variable', 'Arial Narrow', Arial, sans-serif;
   font-size: 22px;
   color: var(--amber);
   font-weight: 400;
@@ -103,6 +108,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 28px;
 }
 .nav-social img { width: 34px; height: 34px; }
+.nav-social-icon { display: flex; align-items: center; opacity: 0.5; cursor: default; }
 .btn-contact {
   background: var(--amber);
   color: var(--cream);
@@ -123,6 +129,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex: 1;
   display: flex;
   align-items: flex-end;
+  overflow: hidden;
 }
 .hero-title {
   position: absolute;
@@ -130,6 +137,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   top: 50%;
   transform: translate(-50%, -50%);
   font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
   font-size: clamp(180px, 28vw, 400px);
   color: var(--amber);
   white-space: nowrap;
@@ -137,17 +146,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   letter-spacing: -4px;
   pointer-events: none;
   user-select: none;
+  z-index: 1;
 }
 .hero-photo {
   position: absolute;
-  left: 263px;
-  bottom: 0;
-  height: 90%;
-  max-height: 700px;
+  left: 200px;
+  top: -70px;
+  height: 110%;
+  max-height: 760px;
   width: auto;
-  object-fit: cover;
-  object-position: top;
-  z-index: 2;
+  object-fit: contain;
+  object-position: top center;
+  z-index: 3;
 }
 .hero-text {
   position: relative;
