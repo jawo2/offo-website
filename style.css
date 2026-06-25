@@ -48,8 +48,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   text-transform: capitalize;
   color: var(--amber);
 }
-.stats .section-num,
-.stats .section-title { color: var(--amber); }
 .proyectos .section-num,
 .proyectos .section-title,
 .colaboracion .section-num,
@@ -115,7 +113,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-family: var(--font-condensed);
   font-size: 18px;
   font-weight: 400;
-  padding: 6px 6px;
+  padding: 4px 8px;
   border-radius: 999px;
   border: 1.5px solid var(--amber);
   white-space: nowrap;
@@ -134,6 +132,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: flex-end;
   overflow: hidden;
+  padding-bottom: 40px;
 }
 .hero-title {
   position: absolute;
@@ -169,88 +168,82 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 0 85px 60px;
   margin-top: auto;
 }
+.hero-subtitle-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 0px;
+}
+.hero-sep {
+  display: block;
+  width: 1.75px;
+  height: 1.5em;
+  background: var(--amber);
+  align-self: center;
+  flex-shrink: 0;
+}
 .hero-subtitle {
-  font-family: var(--font-condensed);
-  font-size: 26px;
+  font-family: 'hatch-sans', Impact, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 24px;
   color: var(--amber);
   text-transform: capitalize;
   letter-spacing: -0.5px;
-  margin-bottom: 4px;
 }
 .hero-location {
   font-family: var(--font-condensed);
-  font-size: 26px;
+  font-size: 18px;
   color: var(--amber);
   text-transform: capitalize;
   letter-spacing: -0.5px;
-  margin-left: auto;
-  position: absolute;
-  right: 85px;
-  bottom: 155px;
 }
 .hero-bio {
   font-family: var(--font-body);
-  font-size: 22px;
+  font-size: 18px;
   color: var(--amber);
   max-width: 1318px;
   line-height: 1.4;
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   ONLINE STATS
+   ONLINE STATS RIBBON
 ══════════════════════════════════════════════════════════════════════ */
-.stats {
-  background: var(--cream);
-}
-.stats-grid {
-  display: flex;
-  gap: 0;
-  padding: 60px 186px;
-  flex: 1;
-  align-items: center;
-}
-.stat-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.stat-number {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: clamp(50px, 6vw, 80px);
-  color: var(--amber);
-  text-transform: capitalize;
+.stats-ribbon {
+  background: var(--amber);
+  padding: 14px 0;
+  overflow: hidden;
   white-space: nowrap;
 }
-.stat-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 16px;
+.stats-ribbon-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 32px;
+  animation: ribbon-scroll 20s linear infinite;
 }
-.stat-label {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 26px;
-  color: var(--amber);
+.ribbon-item {
+  font-family: var(--font-condensed);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--cream);
+  white-space: nowrap;
   text-transform: capitalize;
 }
-.stat-desc {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 22px;
-  color: var(--cream-80);
+.ribbon-item strong {
+  font-weight: 700;
 }
-/* stats section is cream bg but text is on cream — make it amber bg to match design */
-.stats { background: var(--amber); }
-.stats .section-num,
-.stats .section-title { color: var(--cream); }
-.stats .divider { background: var(--cream); }
-.stats .stat-number,
-.stats .stat-label { color: var(--cream); }
-.stats .stat-desc { color: rgba(255,251,237,0.8); }
+.ribbon-sep {
+  color: var(--cream);
+  opacity: 0.5;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+@keyframes ribbon-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
 /* ═══════════════════════════════════════════════════════════════════
    CARDS GRID (shared by Proyectos & Contenido)
@@ -441,7 +434,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    CONTACTO
 ══════════════════════════════════════════════════════════════════════ */
 .contacto {
-  background: var(--amber);
+  background: var(--cream);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -454,7 +447,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 700;
   font-style: italic;
   font-size: clamp(100px, 14vw, 200px);
-  color: var(--cream);
+  color: var(--amber);
   white-space: nowrap;
   padding: 80px 0 0 193px;
   line-height: 1;
@@ -472,7 +465,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .contact-info {
   font-family: var(--font-condensed);
   font-size: 22px;
-  color: var(--cream);
+  color: var(--amber);
   text-transform: capitalize;
   padding: 32px 0 0 193px;
   line-height: 2;
@@ -493,7 +486,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 20px 161px 20px 85px;
   font-family: var(--font-condensed);
   font-size: 20px;
-  color: var(--cream);
+  color: var(--amber);
   letter-spacing: -0.4px;
 }
 
@@ -505,7 +498,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-links { gap: 20px; }
   .hero-photo { left: 120px; }
   .hero-text { padding: 0 40px 40px; }
-  .hero-location { right: 40px; }
   .stats-grid { padding: 40px 60px; }
   .filter-tabs { margin-left: 40px; margin-right: 40px; }
   .collab-slider { padding: 48px 40px 0; }
@@ -524,7 +516,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-title { font-size: clamp(100px, 22vw, 200px); }
   .hero-photo { left: 0; height: 70%; }
   .hero-text { padding: 0 20px 40px; }
-  .hero-location { right: 20px; bottom: 120px; }
   .hero-bio { font-size: 16px; }
   .stats-grid { flex-wrap: wrap; padding: 40px 20px; gap: 40px; }
   .stat-item { min-width: 45%; }
