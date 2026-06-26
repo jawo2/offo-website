@@ -19,12 +19,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ── Section base ───────────────────────────────────────────────── */
 .section {
   width: 100%;
-  min-height: 100vh;
-  position: relative;
+  height: calc(100vh - 58px);
+  position: sticky;
+  top: 58px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
+
+/* Stacking order — each section slides up over the previous */
+.hero         { z-index: 1; }
+.proyectos    { z-index: 2; }
+.contenido    { z-index: 3; }
+.colaboracion { z-index: 4; }
+.contacto     { z-index: 5; }
 
 /* ── Section header ─────────────────────────────────────────────── */
 .section-header {
@@ -62,8 +70,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 ══════════════════════════════════════════════════════════════════════ */
 .hero {
   background: var(--cream);
-  min-height: 100vh;
-  padding-top: 58px;
+  margin-top: 58px;
 }
 
 /* Nav */
@@ -433,8 +440,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-direction: column;
   justify-content: flex-start;
   padding: 0;
-  min-height: 100vh;
-  position: relative;
 }
 .contact-title {
   font-family: var(--font-display);
