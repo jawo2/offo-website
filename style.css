@@ -34,21 +34,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 30px 0 0 0;
   justify-content: center;
 }
-.section-num {
-  font-family: var(--font-condensed);
-  font-weight: 700;
-  font-size: 24px;
-  text-transform: capitalize;
-  color: var(--amber);
-}
+
 .section-title {
-  font-family: var(--font-condensed);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 24px;
+  font-style: italic;
   text-transform: capitalize;
   color: var(--amber);
 }
-.proyectos .section-num,
 .proyectos .section-title,
 .colaboracion .section-num,
 .colaboracion .section-title { color: var(--cream); }
@@ -165,7 +159,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-text {
   position: relative;
   z-index: 3;
-  padding: 0 85px 60px;
+  padding: 0 85px 25px;
   margin-top: auto;
 }
 .hero-subtitle-row {
