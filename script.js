@@ -2,8 +2,15 @@
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
     const section = tab.dataset.section;
+    const filter = tab.dataset.filter;
     document.querySelectorAll(`[data-section="${section}"].tab`).forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
+    const grid = document.querySelector(`.${section} .cards-grid`);
+    if (grid) {
+      grid.querySelectorAll('.card[data-filter]').forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.filter === filter) ? '' : 'none';
+      });
+    }
   });
 });
 

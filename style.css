@@ -56,11 +56,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .colaboracion .section-title { color: var(--cream); }
 
 .divider {
-  width: 1234px;
-  max-width: calc(100% - 120px);
+  width: calc(100% - 170px);
   height: 2px;
   background: var(--amber);
-  margin: 24px auto 0;
+  margin: 24px 0 0 85px;
   flex-shrink: 0;
 }
 .divider-light { background: var(--cream); }
@@ -261,6 +260,27 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: 20px;
   box-shadow: -8px 13px 30px rgba(0,0,0,0.15);
   flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.card iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 48px 14px 14px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  font-family: var(--font-condensed);
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  pointer-events: none;
 }
 /* Approximate proportions from Figma */
 .card-tall        { width: 249px; height: 431px; }
@@ -282,41 +302,40 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .filter-tabs {
   display: flex;
-  gap: 0;
-  background: var(--cream);
-  border: 1px solid var(--cream);
-  border-radius: 8px;
-  padding: 12px 8px;
+  gap: 8px;
   width: fit-content;
-  margin: 32px 85px 0 auto;
+  margin: 32px 0 0 85px;
 }
-.filter-tabs-right { margin: 32px 85px 0 auto; }
+.filter-tabs-right { margin: 32px 0 0 85px; }
 
 .tab {
   font-family: var(--font-condensed);
   font-size: 17px;
   font-weight: 400;
-  color: var(--amber);
+  color: var(--cream);
   text-transform: capitalize;
-  padding: 8px 12px;
-  border-radius: 20px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--cream);
+  background: transparent;
   transition: background 0.2s, color 0.2s;
   letter-spacing: -0.3px;
   white-space: nowrap;
 }
 .tab.active,
 .tab:hover {
-  background: var(--amber);
-  color: var(--cream);
-}
-.tab-dark { color: var(--cream); }
-.tab-dark.active,
-.tab-dark:hover {
   background: var(--cream);
   color: var(--amber);
 }
-
-.proyectos .filter-tabs { background: var(--cream); border-color: var(--cream); }
+.tab-dark {
+  color: var(--amber);
+  border-color: var(--amber);
+}
+.tab-dark.active,
+.tab-dark:hover {
+  background: var(--amber);
+  color: var(--cream);
+}
 .proyectos .cards-grid { padding-left: 0; }
 
 .proyectos .cards-grid,
@@ -334,13 +353,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .contenido {
   background: var(--cream);
 }
-.contenido .filter-tabs {
-  background: var(--amber);
-  border-color: var(--cream);
-}
-.contenido .tab { color: var(--cream); }
-.contenido .tab.active,
-.contenido .tab:hover { background: var(--cream); color: var(--amber); }
 
 /* ═══════════════════════════════════════════════════════════════════
    FORMAS DE COLABORACIÓN

@@ -71,16 +71,63 @@
     </div>
     <div class="divider divider-light"></div>
     <div class="filter-tabs">
-      <button class="tab active" data-section="proyectos" data-filter="publicidad">Publicidad</button>
+      <button class="tab active" data-section="proyectos" data-filter="all">Todo</button>
+      <button class="tab" data-section="proyectos" data-filter="publicidad">Publicidad</button>
       <button class="tab" data-section="proyectos" data-filter="teatro">Teatro</button>
       <button class="tab" data-section="proyectos" data-filter="series">Extra en series</button>
     </div>
     <div class="cards-grid">
-      <div class="card card-tall"></div>
-      <div class="card card-medium card-wide"></div>
-      <div class="card card-short"></div>
-      <div class="card card-tall card-wide-2"></div>
-      <div class="card card-medium-2"></div>
+      <!-- Publicidad -->
+      <div class="card card-tall" data-filter="publicidad">
+        <iframe src="https://www.tiktok.com/embed/v2/7651765548077845767" loading="lazy" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media;"></iframe>
+        <div class="card-label">Popeye</div>
+      </div>
+      <div class="card card-tall" data-filter="publicidad">
+        <iframe src="https://www.tiktok.com/embed/v2/7630906321197354248" loading="lazy" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media;"></iframe>
+        <div class="card-label">Papa John's</div>
+      </div>
+      <div class="card card-tall" data-filter="publicidad">
+        <iframe src="https://www.tiktok.com/embed/v2/7570894724157033746" loading="lazy" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media;"></iframe>
+        <div class="card-label">Mifarma</div>
+      </div>
+      <div class="card card-tall" data-filter="publicidad">
+        <iframe src="https://www.tiktok.com/embed/v2/7397114839782460678" loading="lazy" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media;"></iframe>
+        <div class="card-label">Temu</div>
+      </div>
+      <div class="card card-tall" data-filter="publicidad">
+        <iframe src="https://www.tiktok.com/embed/v2/7384592913348545797" loading="lazy" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media;"></iframe>
+        <div class="card-label">Coca-Cola</div>
+      </div>
+      <div class="card card-tall" data-filter="publicidad">
+        <iframe src="https://www.tiktok.com/embed/v2/7643974615290744071" loading="lazy" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media;"></iframe>
+        <div class="card-label">Carmelina</div>
+      </div>
+      <!-- Extra en series -->
+      <div class="card card-tall card-wide-2" data-filter="series">
+        <iframe src="https://drive.google.com/file/d/1qso9FiFUOeT2cZt2r-SbHM2hFKz5kgoj/preview" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
+        <div class="card-label">Valentina Valiente</div>
+      </div>
+      <div class="card card-medium card-wide" data-filter="series">
+        <iframe src="https://drive.google.com/file/d/1wEySN5WY1rjn3wBbOJ7hmQu6P4CJ7o0b/preview" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
+        <div class="card-label">BTS</div>
+      </div>
+      <div class="card card-tall" data-filter="series">
+        <iframe src="https://drive.google.com/file/d/1MohUOM-ePgx1tND4QK3apv7yfLy1XNLv/preview" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
+        <div class="card-label">BTS</div>
+      </div>
+      <div class="card card-tall" data-filter="series">
+        <iframe src="https://drive.google.com/file/d/1OJjXBFcsEs82jAagPGYj5btnYga9jErZ/preview" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
+        <div class="card-label">BTS</div>
+      </div>
+      <!-- Teatro -->
+      <div class="card card-tall card-wide-2" data-filter="teatro">
+        <iframe src="https://drive.google.com/file/d/1z1QlcbLf27Hz7WBxQicjoN2TZ1KF6DvY/preview" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
+        <div class="card-label">Monologue</div>
+      </div>
+      <div class="card card-medium-2" data-filter="teatro">
+        <iframe src="https://drive.google.com/file/d/14yiKDtDBvmZTh4v3LoOpvByvloE5UZui/preview" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
+        <div class="card-label">Rapunzel</div>
+      </div>
     </div>
   </section>
 
@@ -91,7 +138,8 @@
     </div>
     <div class="divider"></div>
     <div class="filter-tabs filter-tabs-right">
-      <button class="tab tab-dark active" data-section="contenido" data-filter="ultimo">Lo último</button>
+      <button class="tab tab-dark active" data-section="contenido" data-filter="all">Todo</button>
+      <button class="tab tab-dark" data-section="contenido" data-filter="ultimo">Lo último</button>
       <button class="tab tab-dark" data-section="contenido" data-filter="highlights">Highlights</button>
     </div>
     <div class="cards-grid">
