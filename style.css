@@ -246,7 +246,32 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   CARDS GRID (shared by Proyectos & Contenido)
+   CAROUSEL (Proyectos)
+══════════════════════════════════════════════════════════════════════ */
+.cards-carousel {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 24px 0;
+}
+.cards-track {
+  display: inline-flex;
+  gap: 16px;
+  align-items: flex-end;
+  animation: carousel-scroll 50s linear infinite;
+}
+.cards-carousel:hover .cards-track,
+.cards-carousel.video-active .cards-track {
+  animation-play-state: paused;
+}
+@keyframes carousel-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CARDS GRID (Contenido)
 ══════════════════════════════════════════════════════════════════════ */
 .cards-grid {
   display: flex;
@@ -260,8 +285,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: 20px;
   box-shadow: -8px 13px 30px rgba(0,0,0,0.15);
   flex-shrink: 0;
-  position: relative;
   overflow: hidden;
+  display: grid;
+  grid-template: 1fr / 1fr;
 }
 .card iframe {
   width: 100%;
@@ -269,11 +295,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border: none;
   display: block;
 }
+.card video,
+.card img {
+  grid-area: 1/1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.card video { cursor: pointer; }
 .card-label {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  grid-area: 1/1;
+  align-self: end;
   padding: 48px 14px 14px;
   background: linear-gradient(transparent, rgba(0,0,0,0.6));
   font-family: var(--font-condensed);
@@ -493,8 +526,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .footer {
   display: flex;
-  justify-content: space-between;
-  padding: 20px 161px 20px 85px;
+  justify-content: flex-end;
+  padding: 20px 85px;
   font-family: var(--font-condensed);
   font-size: 20px;
   color: var(--amber);

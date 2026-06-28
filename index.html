@@ -17,7 +17,6 @@
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#contenido">Contenido</a></li>
         <li><a href="#colaboracion">Formas De Colaboración</a></li>
-        <li><a href="#stats">Online Stats</a></li>
       </ul>
       <div class="nav-social">
         <span class="nav-social-icon"><img src="assets/tiktok.svg" alt="YouTube" /></span>
@@ -71,62 +70,81 @@
     </div>
     <div class="divider divider-light"></div>
     <div class="filter-tabs">
-      <button class="tab active" data-section="proyectos" data-filter="all">Todo</button>
-      <button class="tab" data-section="proyectos" data-filter="publicidad">Publicidad</button>
-      <button class="tab" data-section="proyectos" data-filter="teatro">Teatro</button>
-      <button class="tab" data-section="proyectos" data-filter="series">Extra en series</button>
+      <button class="tab active" data-filter="all">Todo</button>
+      <button class="tab" data-filter="publicidad">Publicidad</button>
+      <button class="tab" data-filter="teatro">Teatro</button>
+      <button class="tab" data-filter="series">Extra en series</button>
     </div>
-    <div class="cards-grid">
-      <!-- Publicidad -->
-      <div class="card card-tall" data-filter="publicidad">
-        <iframe src="https://www.tiktok.com/embed/v2/7651765548077845767" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media;"></iframe>
-        <div class="card-label">Popeye</div>
-      </div>
-      <div class="card card-tall" data-filter="publicidad">
-        <iframe src="https://www.tiktok.com/embed/v2/7630906321197354248" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media;"></iframe>
-        <div class="card-label">Papa John's</div>
-      </div>
-      <div class="card card-tall" data-filter="publicidad">
-        <iframe src="https://www.tiktok.com/embed/v2/7570894724157033746" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media;"></iframe>
-        <div class="card-label">Mifarma</div>
-      </div>
-      <div class="card card-tall" data-filter="publicidad">
-        <iframe src="https://www.tiktok.com/embed/v2/7397114839782460678" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media;"></iframe>
-        <div class="card-label">Temu</div>
-      </div>
-      <div class="card card-tall" data-filter="publicidad">
-        <iframe src="https://www.tiktok.com/embed/v2/7384592913348545797" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media;"></iframe>
-        <div class="card-label">Coca-Cola</div>
-      </div>
-      <div class="card card-tall" data-filter="publicidad">
-        <iframe src="https://www.tiktok.com/embed/v2/7643974615290744071" frameborder="0" scrolling="no" allowfullscreen allow="encrypted-media;"></iframe>
-        <div class="card-label">Carmelina</div>
-      </div>
-      <!-- Extra en series -->
-      <div class="card card-tall card-wide-2" data-filter="series">
-        <iframe src="https://drive.google.com/file/d/1qso9FiFUOeT2cZt2r-SbHM2hFKz5kgoj/preview" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
-        <div class="card-label">Valentina Valiente</div>
-      </div>
-      <div class="card card-medium card-wide" data-filter="series">
-        <iframe src="https://drive.google.com/file/d/1wEySN5WY1rjn3wBbOJ7hmQu6P4CJ7o0b/preview" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
-        <div class="card-label">Behind the Scenes</div>
-      </div>
-      <div class="card card-tall" data-filter="series">
-        <iframe src="https://drive.google.com/file/d/1MohUOM-ePgx1tND4QK3apv7yfLy1XNLv/preview" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
-        <div class="card-label">Behind the Scenes</div>
-      </div>
-      <div class="card card-tall" data-filter="series">
-        <iframe src="https://drive.google.com/file/d/1OJjXBFcsEs82jAagPGYj5btnYga9jErZ/preview" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
-        <div class="card-label">Behind the Scenes</div>
-      </div>
-      <!-- Teatro -->
-      <div class="card card-tall card-wide-2" data-filter="teatro">
-        <iframe src="https://drive.google.com/file/d/1z1QlcbLf27Hz7WBxQicjoN2TZ1KF6DvY/preview" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
-        <div class="card-label">Monologue</div>
-      </div>
-      <div class="card card-medium-2" data-filter="teatro">
-        <iframe src="https://drive.google.com/file/d/14yiKDtDBvmZTh4v3LoOpvByvloE5UZui/preview" frameborder="0" allowfullscreen allow="autoplay;"></iframe>
-        <div class="card-label">Rapunzel</div>
+    <div class="cards-carousel">
+      <div class="cards-track">
+        <div class="card card-tall" data-filter="publicidad">
+          <video src="media/publicidad/popeyes.mp4" muted loop playsinline preload="auto"></video>
+          <div class="card-label">Popeyes</div>
+        </div>
+        <div class="card card-tall" data-filter="publicidad">
+          <video src="media/publicidad/papajhons.mp4" muted loop playsinline preload="auto"></video>
+          <div class="card-label">Papa Johns</div>
+        </div>
+        <div class="card card-tall" data-filter="publicidad">
+          <video src="media/publicidad/mifarma.mp4" muted loop playsinline preload="auto"></video>
+          <div class="card-label">Mifarma</div>
+        </div>
+        <div class="card card-tall" data-filter="publicidad">
+          <video src="media/publicidad/temu.mp4" muted loop playsinline preload="auto"></video>
+          <div class="card-label">Temu</div>
+        </div>
+        <div class="card card-tall" data-filter="publicidad">
+          <video src="media/publicidad/cocacola.mp4" muted loop playsinline preload="auto"></video>
+          <div class="card-label">Coca-Cola</div>
+        </div>
+        <div class="card card-tall" data-filter="publicidad">
+          <video src="media/publicidad/carmelina.mp4" muted loop playsinline preload="auto"></video>
+          <div class="card-label">Carmelina</div>
+        </div>
+        <div class="card card-tall" data-filter="publicidad">
+          <video src="media/publicidad/platanitos.mp4" muted loop playsinline preload="auto"></video>
+          <div class="card-label">Platanitos</div>
+        </div>
+        <div class="card card-tall" data-filter="publicidad">
+          <img src="media/publicidad/perusical.jpg" alt="Perusical" />
+          <div class="card-label">Perusical</div>
+        </div>
+        <div class="card card-tall card-wide-2" data-filter="series">
+          <video src="media/extra/valentina%20valiente1.mp4" muted loop playsinline preload="auto"></video>
+          <div class="card-label">Valentina Valiente</div>
+        </div>
+        <div class="card card-tall card-wide-2" data-filter="series">
+          <video src="media/extra/valentina%20valiente%202.mp4" muted loop playsinline preload="auto"></video>
+          <div class="card-label">Valentina Valiente</div>
+        </div>
+        <div class="card card-medium card-wide" data-filter="series">
+          <video src="media/extra/fitcheckset.mp4" muted loop playsinline preload="auto"></video>
+          <div class="card-label">Behind the Scenes</div>
+        </div>
+        <div class="card card-medium card-wide" data-filter="series">
+          <video src="media/extra/setgrab3.mp4" muted loop playsinline preload="auto"></video>
+          <div class="card-label">Behind the Scenes</div>
+        </div>
+        <div class="card card-tall" data-filter="series">
+          <img src="media/extra/setgrab1.jpg" alt="Behind the Scenes" />
+          <div class="card-label">Behind the Scenes</div>
+        </div>
+        <div class="card card-tall" data-filter="series">
+          <img src="media/extra/setgrab2.jpg" alt="Behind the Scenes" />
+          <div class="card-label">Behind the Scenes</div>
+        </div>
+        <div class="card card-tall" data-filter="teatro">
+          <img src="media/teatro/rapunzel1.jpg" alt="Rapunzel" />
+          <div class="card-label">Rapunzel</div>
+        </div>
+        <div class="card card-tall" data-filter="teatro">
+          <img src="media/teatro/rapunzel2.jpg" alt="Rapunzel" />
+          <div class="card-label">Rapunzel</div>
+        </div>
+        <div class="card card-tall" data-filter="teatro">
+          <img src="media/teatro/bookofmormon.jpg" alt="Book of Mormon" />
+          <div class="card-label">Book of Mormon</div>
+        </div>
       </div>
     </div>
   </section>
@@ -225,8 +243,7 @@
     </div>
     <div class="divider contact-divider"></div>
     <footer class="footer">
-      <span>Offo © 2026</span>
-      <span>Creado por Jaime Wong</span>
+      <span>Creado por MSC & JWP </span>
     </footer>
   </section>
 

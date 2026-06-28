@@ -1,11 +1,98 @@
-// Tab filter switching
-document.querySelectorAll('.tab').forEach(tab => {
+// Proyectos carousel with filter
+(function () {
+  const track = document.querySelector('.proyectos .cards-track');
+  if (!track) return;
+
+  const sourceCards = Array.from(track.querySelectorAll('.card[data-filter]'));
+  const carousel = track.closest('.cards-carousel');
+  const BASE_SPEED = 70; // px/s
+
+  let playingVideo = null;
+
+  function pauseCarousel() { carousel.classList.add('video-active'); }
+  function resumeCarousel() { carousel.classList.remove('video-active'); }
+
+  function attachVideoEvents() {
+    track.querySelectorAll('video').forEach(video => {
+      // Show first frame — check readyState in case metadata already loaded before this listener ran
+      const showFirstFrame = () => { video.currentTime = 0.001; };
+      if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
+        showFirstFrame();
+      } else {
+        video.addEventListener('loadedmetadata', showFirstFrame, { once: true });
+      }
+
+      video.addEventListener('click', () => {
+        if (video.paused) {
+          if (playingVideo && playingVideo !== video) {
+            const prev = playingVideo;
+            playingVideo = null; // null before pause so its pause event doesn't trigger resumeCarousel
+            prev.pause();
+            prev.muted = true;
+            prev.currentTime = 0;
+          }
+          playingVideo = video;
+          video.muted = false; // unmute when user explicitly plays
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+
+      video.addEventListener('play', pauseCarousel);
+
+      video.addEventListener('pause', () => {
+        if (playingVideo === video) {
+          playingVideo = null;
+          video.muted = true; // re-mute so it's ready for future autoplay
+          resumeCarousel();
+        }
+      });
+    });
+  }
+
+  function buildCarousel(filter) {
+    playingVideo = null;
+    carousel.classList.remove('video-active');
+
+    const matching = filter === 'all'
+      ? sourceCards
+      : sourceCards.filter(c => c.dataset.filter === filter);
+
+    track.style.gap = matching.length <= 4 ? '64px' : matching.length <= 8 ? '40px' : '16px';
+    track.innerHTML = '';
+    [...matching, ...matching.map(c => c.cloneNode(true))].forEach(c => track.appendChild(c));
+
+    track.style.animationPlayState = '';
+    track.style.animationName = 'none';
+    track.offsetHeight;
+    const duration = (track.scrollWidth / 2) / BASE_SPEED;
+    track.style.animationName = 'carousel-scroll';
+    track.style.animationDuration = `${duration}s`;
+    track.style.animationTimingFunction = 'linear';
+    track.style.animationIterationCount = 'infinite';
+
+    attachVideoEvents();
+  }
+
+  buildCarousel('all');
+
+  document.querySelectorAll('.proyectos .tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.proyectos .tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      buildCarousel(tab.dataset.filter);
+    });
+  });
+})();
+
+// Contenido tab filter switching
+document.querySelectorAll('.contenido .tab').forEach(tab => {
   tab.addEventListener('click', () => {
-    const section = tab.dataset.section;
     const filter = tab.dataset.filter;
-    document.querySelectorAll(`[data-section="${section}"].tab`).forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.contenido .tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    const grid = document.querySelector(`.${section} .cards-grid`);
+    const grid = document.querySelector('.contenido .cards-grid');
     if (grid) {
       grid.querySelectorAll('.card[data-filter]').forEach(card => {
         card.style.display = (filter === 'all' || card.dataset.filter === filter) ? '' : 'none';
