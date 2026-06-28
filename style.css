@@ -322,6 +322,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .card-short       { width: 213px; height: 288px; }
 .card-wide-2      { width: 335px; height: 425px; }
 .card-medium-2    { width: 334px; height: 365px; }
+.card-landscape   { width: 420px; height: 246px; align-self: center; }
 
 /* ═══════════════════════════════════════════════════════════════════
    PROYECTOS
@@ -570,6 +571,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .card-short { width: 140px; height: 190px; }
   .card-wide-2 { width: 220px; height: 280px; }
   .card-medium-2 { width: 200px; height: 240px; }
+  .card-landscape { width: 260px; height: 153px; }
   .filter-tabs { margin: 20px 20px 0 auto; }
   .collab-slider { padding: 24px 20px 0; }
   .collab-card { width: 100%; padding: 32px 24px; min-height: 360px; }
