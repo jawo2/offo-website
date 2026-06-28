@@ -62,17 +62,38 @@
 
   function buildCarousel(filter) {
     playingVideo = null;
-    carousel.classList.remove('video-active');
+    track.style.animationPlayState = '';
 
     const matching = filter === 'all'
       ? sourceCards
       : sourceCards.filter(c => c.dataset.filter === filter);
 
-    track.style.gap = matching.length <= 4 ? '64px' : matching.length <= 8 ? '40px' : '16px';
-    track.innerHTML = '';
-    [...matching, ...matching.map(c => c.cloneNode(true))].forEach(c => track.appendChild(c));
+    if (!matching.length) { track.innerHTML = ''; return; }
 
-    track.style.animationPlayState = '';
+    const gapPx = 16;
+    track.style.gap = '0';
+
+    // Measure one set with marginRight to find how many repeats fill the viewport
+    track.innerHTML = '';
+    matching.forEach(c => {
+      const clone = c.cloneNode(true);
+      clone.style.marginRight = `${gapPx}px`;
+      track.appendChild(clone);
+    });
+    track.style.animationName = 'none';
+    track.offsetHeight;
+    const repeats = Math.max(1, Math.ceil(carousel.offsetWidth / track.scrollWidth));
+
+    // Build 2 × repeats sets for seamless -50% loop, always fresh clones
+    track.innerHTML = '';
+    for (let i = 0; i < repeats * 2; i++) {
+      matching.forEach(c => {
+        const clone = c.cloneNode(true);
+        clone.style.marginRight = `${gapPx}px`;
+        track.appendChild(clone);
+      });
+    }
+
     track.style.animationName = 'none';
     track.offsetHeight;
     const duration = (track.scrollWidth / 2) / BASE_SPEED;
@@ -158,17 +179,38 @@
 
   function buildCarousel(filter) {
     playingVideo = null;
-    carousel.classList.remove('video-active');
+    track.style.animationPlayState = '';
 
     const matching = filter === 'all'
       ? sourceCards
       : sourceCards.filter(c => c.dataset.filter === filter);
 
-    track.style.gap = matching.length <= 4 ? '64px' : matching.length <= 8 ? '40px' : '16px';
-    track.innerHTML = '';
-    [...matching, ...matching.map(c => c.cloneNode(true))].forEach(c => track.appendChild(c));
+    if (!matching.length) { track.innerHTML = ''; return; }
 
-    track.style.animationPlayState = '';
+    const gapPx = 16;
+    track.style.gap = '0';
+
+    // Measure one set with marginRight to find how many repeats fill the viewport
+    track.innerHTML = '';
+    matching.forEach(c => {
+      const clone = c.cloneNode(true);
+      clone.style.marginRight = `${gapPx}px`;
+      track.appendChild(clone);
+    });
+    track.style.animationName = 'none';
+    track.offsetHeight;
+    const repeats = Math.max(1, Math.ceil(carousel.offsetWidth / track.scrollWidth));
+
+    // Build 2 × repeats sets for seamless -50% loop, always fresh clones
+    track.innerHTML = '';
+    for (let i = 0; i < repeats * 2; i++) {
+      matching.forEach(c => {
+        const clone = c.cloneNode(true);
+        clone.style.marginRight = `${gapPx}px`;
+        track.appendChild(clone);
+      });
+    }
+
     track.style.animationName = 'none';
     track.offsetHeight;
     const duration = (track.scrollWidth / 2) / BASE_SPEED;
@@ -210,8 +252,23 @@ dots.forEach(dot => {
 setInterval(() => goToSlide((current + 1) % dots.length), 4000);
 
 // Active nav link on scroll
+const NAV_HEIGHT = 58;
 const sections = document.querySelectorAll('.section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
+
+// Nav jump — instant scroll to section, sets both containers for cross-browser support
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    const href = link.getAttribute('href');
+    if (!href || !href.startsWith('#')) return;
+    e.preventDefault();
+    const idx = Array.from(sections).findIndex(s => s.id === href.slice(1));
+    if (idx < 0) return;
+    const targetY = idx * (window.innerHeight - NAV_HEIGHT);
+    document.documentElement.scrollTop = targetY;
+    document.body.scrollTop = targetY;
+  });
+});
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -232,7 +289,7 @@ const invertedSections = new Set(['proyectos', 'colaboracion']);
 function updateNavTheme() {
   let current = sections[0];
   sections.forEach(section => {
-    if (section.getBoundingClientRect().top <= 58) current = section;
+    if (section.getBoundingClientRect().top <= NAV_HEIGHT) current = section;
   });
   nav.classList.toggle('nav-inverted', invertedSections.has(current.id));
 }
