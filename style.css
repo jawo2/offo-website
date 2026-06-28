@@ -93,7 +93,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   gap: 20px;
   padding: 10px 85px;
-  background: var(--cream);
+  background: var(--amber);
+  transition: background 0.25s ease;
 }
 .nav-links {
   display: flex;
@@ -103,10 +104,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-links a {
   font-family: 'mundial-narrow-variable', 'Arial Narrow', Arial, sans-serif;
   font-size: 18px;
-  color: var(--amber);
+  color: var(--cream);
   font-weight: 400;
   white-space: nowrap;
-  transition: opacity 0.2s;
+  transition: color 0.25s ease, opacity 0.2s;
 }
 .nav-links a:hover { opacity: 0.7; }
 .nav-social {
@@ -115,25 +116,32 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   gap: 28px;
 }
-.nav-social img { width: 24px; height: 24px; }
+.nav-social img { width: 24px; height: 24px; filter: brightness(0) invert(1); transition: filter 0.25s ease; }
 .nav-social-icon { display: flex; align-items: center; opacity: 0.5; cursor: default; }
 .btn-contact {
   background: transparent;
-  color: var(--amber);
+  color: var(--cream);
   font-family: var(--font-condensed);
   font-size: 18px;
   font-weight: 400;
   padding: 4px 8px;
   border-radius: 999px;
-  border: 1.5px solid var(--amber);
+  border: 1.5px solid var(--cream);
   white-space: nowrap;
   margin-left: 16px;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.25s ease;
 }
 .btn-contact:hover {
-  background: var(--amber);
-  color: var(--cream);
+  background: var(--cream);
+  color: var(--amber);
 }
+
+/* Nav inverted (over amber sections) */
+.nav.nav-inverted { background: var(--cream); }
+.nav.nav-inverted .nav-links a { color: var(--amber); }
+.nav.nav-inverted .btn-contact { color: var(--amber); border-color: var(--amber); }
+.nav.nav-inverted .btn-contact:hover { background: var(--amber); color: var(--cream); }
+.nav.nav-inverted .nav-social img { filter: none; }
 
 /* Hero content */
 .hero-content {
@@ -230,8 +238,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .stats-ribbon-track {
   display: inline-flex;
   align-items: center;
-  gap: 32px;
   animation: ribbon-scroll 20s linear infinite;
+  will-change: transform;
 }
 .ribbon-item {
   font-family: var(--font-condensed);
@@ -240,6 +248,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--cream);
   white-space: nowrap;
   text-transform: capitalize;
+  margin-right: 32px;
 }
 .ribbon-item strong {
   font-weight: 700;
@@ -249,6 +258,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   opacity: 0.5;
   font-size: 20px;
   flex-shrink: 0;
+  margin-right: 32px;
 }
 @keyframes ribbon-scroll {
   0%   { transform: translateX(0); }

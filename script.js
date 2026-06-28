@@ -16,8 +16,8 @@
     return video.closest('.card').querySelector('.mute-icon');
   }
 
-  function pauseCarousel() { carousel.classList.add('video-active'); }
-  function resumeCarousel() { carousel.classList.remove('video-active'); }
+  function pauseCarousel() { track.style.animationPlayState = 'paused'; }
+  function resumeCarousel() { track.style.animationPlayState = 'running'; }
 
   function attachVideoEvents() {
     track.querySelectorAll('video').forEach(video => {
@@ -113,8 +113,8 @@
     return video.closest('.card').querySelector('.mute-icon');
   }
 
-  function pauseCarousel() { carousel.classList.add('video-active'); }
-  function resumeCarousel() { carousel.classList.remove('video-active'); }
+  function pauseCarousel() { track.style.animationPlayState = 'paused'; }
+  function resumeCarousel() { track.style.animationPlayState = 'running'; }
 
   function attachVideoEvents() {
     track.querySelectorAll('video').forEach(video => {
@@ -224,3 +224,18 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 
 sections.forEach(s => observer.observe(s));
+
+// Nav color theme — inverts when scrolling over amber sections
+const nav = document.querySelector('.nav');
+const invertedSections = new Set(['proyectos', 'colaboracion']);
+
+function updateNavTheme() {
+  let current = sections[0];
+  sections.forEach(section => {
+    if (section.getBoundingClientRect().top <= 58) current = section;
+  });
+  nav.classList.toggle('nav-inverted', invertedSections.has(current.id));
+}
+
+window.addEventListener('scroll', updateNavTheme, { passive: true });
+updateNavTheme();
