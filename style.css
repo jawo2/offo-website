@@ -261,7 +261,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: flex-end;
   animation: carousel-scroll 50s linear infinite;
 }
-.cards-carousel:hover .cards-track,
 .cards-carousel.video-active .cards-track {
   animation-play-state: paused;
 }

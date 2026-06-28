@@ -39,15 +39,17 @@
         }
       });
 
-      video.addEventListener('play', pauseCarousel);
-
       video.addEventListener('pause', () => {
         if (playingVideo === video) {
           playingVideo = null;
-          video.muted = true; // re-mute so it's ready for future autoplay
-          resumeCarousel();
+          video.muted = true;
         }
       });
+    });
+
+    track.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseenter', pauseCarousel);
+      card.addEventListener('mouseleave', resumeCarousel);
     });
   }
 
