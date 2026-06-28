@@ -55,6 +55,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .colaboracion .section-num,
 .colaboracion .section-title { color: var(--cream); }
 
+.contenido-tagline {
+  display: block;
+  font-family: var(--font-condensed);
+  font-size: 18px;
+  color: var(--amber);
+  margin: 0 0 0 85px;
+  margin-top: 16px;
+}
+.contenido .divider { margin-top: 24px; }
+
 .divider {
   width: calc(100% - 170px);
   height: 2px;
@@ -388,16 +398,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--amber);
   color: var(--cream);
 }
-.proyectos .cards-grid { padding-left: 0; }
-
-.proyectos .cards-grid,
-.contenido .cards-grid {
-  padding: 32px 0 60px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.proyectos .cards-grid::-webkit-scrollbar,
-.contenido .cards-grid::-webkit-scrollbar { display: none; }
 
 /* ═══════════════════════════════════════════════════════════════════
    CONTENIDO
