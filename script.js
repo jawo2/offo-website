@@ -22,6 +22,8 @@
   function attachVideoEvents() {
     track.querySelectorAll('video').forEach(video => {
       // Show first frame — check readyState in case metadata already loaded before this listener ran
+      video.play().catch(() => {});
+
       const showFirstFrame = () => { video.currentTime = 0.001; };
       if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
         showFirstFrame();
