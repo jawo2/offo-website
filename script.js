@@ -241,8 +241,7 @@
 const collabCards = document.querySelectorAll('.collab-card');
 
 collabCards.forEach(card => {
-  card.querySelector('.collab-card-toggle').addEventListener('click', e => {
-    e.stopPropagation();
+  card.addEventListener('click', () => {
     const wasOpen = card.classList.contains('is-open');
     collabCards.forEach(c => c.classList.remove('is-open'));
     if (!wasOpen) card.classList.add('is-open');
@@ -254,6 +253,8 @@ document.addEventListener('click', e => {
     collabCards.forEach(c => c.classList.remove('is-open'));
   }
 });
+
+if (collabCards.length) collabCards[0].classList.add('is-open');
 
 // Active nav link on scroll
 const NAV_HEIGHT = 58;
@@ -271,6 +272,12 @@ navLinks.forEach(link => {
     const targetY = idx * (window.innerHeight - NAV_HEIGHT);
     document.documentElement.scrollTop = targetY;
     document.body.scrollTop = targetY;
+    if (href === '#colaboracion' && collabCards.length) {
+      setTimeout(() => {
+        collabCards.forEach(c => c.classList.remove('is-open'));
+        collabCards[0].classList.add('is-open');
+      }, 0);
+    }
   });
 });
 
@@ -288,7 +295,7 @@ sections.forEach(s => observer.observe(s));
 
 // Nav color theme — inverts when scrolling over amber sections
 const nav = document.querySelector('.nav');
-const invertedSections = new Set(['proyectos']);
+const invertedSections = new Set(['proyectos', 'contenido']);
 
 function updateNavTheme() {
   let current = sections[0];

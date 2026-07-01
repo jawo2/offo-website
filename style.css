@@ -32,8 +32,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Stacking order — each section slides up over the previous */
 .hero         { z-index: 1; }
 .proyectos    { z-index: 2; }
-.contenido    { z-index: 3; }
-.colaboracion { z-index: 4; }
+.colaboracion { z-index: 3; }
+.contenido    { z-index: 4; }
 .contacto     { z-index: 5; }
 
 /* ── Section header ─────────────────────────────────────────────── */
@@ -59,7 +59,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
   font-family: var(--font-condensed);
   font-size: 18px;
-  color: var(--amber);
+  color: var(--cream);
   margin: 0 0 0 85px;
   margin-top: 16px;
 }
@@ -414,8 +414,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    CONTENIDO
 ══════════════════════════════════════════════════════════════════════ */
 .contenido {
-  background: var(--cream);
+  background: var(--amber);
 }
+.contenido .section-title { color: var(--cream); }
 
 /* ═══════════════════════════════════════════════════════════════════
    FORMAS DE COLABORACIÓN
@@ -429,34 +430,35 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   min-height: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 20px;
   padding: 40px 85px;
 }
 
 .collab-card {
   position: relative;
-  width: 320px;
+  flex: 1;
+  min-width: 0;
   height: 100%;
-  max-height: 620px;
+  max-height: 500px;
   border-radius: 24px;
   overflow: hidden;
-  flex-shrink: 0;
   cursor: pointer;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
 }
-.collab-card:not(:first-child) { margin-left: -110px; }
+.collab-card:not(:first-child) { margin-left: 0; }
 .collab-card:nth-child(1) { z-index: 4; }
 .collab-card:nth-child(2) { z-index: 3; }
 .collab-card:nth-child(3) { z-index: 2; }
 .collab-card:nth-child(4) { z-index: 1; }
 .collab-card:hover {
   z-index: 10;
-  transform: translateY(-16px);
+  transform: scale(1.04);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
 }
 .collab-card.is-open {
   z-index: 20;
-  transform: translateY(-16px);
+  transform: scale(1.04);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
 }
 
@@ -481,13 +483,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: 2;
   pointer-events: none;
   background: var(--amber);
-  clip-path: circle(0px at calc(100% - 56px) calc(100% - 56px));
-  -webkit-clip-path: circle(0px at calc(100% - 56px) calc(100% - 56px));
-  transition: clip-path 0.5s ease, -webkit-clip-path 0.5s ease;
+  clip-path: circle(0px at calc(100% - 50px) calc(100% - 50px));
+  -webkit-clip-path: circle(0px at calc(100% - 50px) calc(100% - 50px));
+  transition: clip-path 0.75s cubic-bezier(0.4, 0, 0.2, 1), -webkit-clip-path 0.75s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .collab-card.is-open .collab-card-fill {
-  clip-path: circle(1500px at calc(100% - 56px) calc(100% - 56px));
-  -webkit-clip-path: circle(1500px at calc(100% - 56px) calc(100% - 56px));
+  clip-path: circle(1500px at calc(100% - 50px) calc(100% - 50px));
+  -webkit-clip-path: circle(1500px at calc(100% - 50px) calc(100% - 50px));
 }
 
 .collab-card-top {
@@ -508,9 +510,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .collab-card-toggle {
   position: absolute;
   right: 28px;
-  top: calc(100% - 84px);
-  width: 56px;
-  height: 56px;
+  top: calc(100% - 72px);
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--amber);
   color: var(--cream);
@@ -518,9 +520,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   justify-content: center;
   z-index: 4;
-  transition: top 0.5s ease, background 0.3s ease 0.15s, color 0.3s ease 0.15s;
+  transition: top 0.75s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease 0.3s, color 0.3s ease 0.3s;
 }
-.collab-card-toggle svg { width: 22px; height: 22px; }
+.collab-card-toggle svg { width: 18px; height: 18px; }
 .collab-card.is-open .collab-card-toggle {
   top: 28px;
   background: var(--cream);
@@ -575,6 +577,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   opacity: 1;
   transform: none;
   transition-delay: 0.5s;
+}
+
+.collab-footnote {
+  font-family: var(--font-condensed);
+  font-size: 18px;
+  color: var(--amber);
+  opacity: 0.75;
+  padding: 8px 85px 72px;
+  line-height: 1.5;
+  text-align: center;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -676,7 +688,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .section-header { gap: 20px; }
 
   .collab-deck { padding: 24px 16px; }
-  .collab-card { width: 150px; max-height: 480px; border-radius: 16px; }
+  .collab-card { flex: none; width: 150px; max-height: 480px; border-radius: 16px; }
   .collab-card:not(:first-child) { margin-left: -60px; }
   .collab-card.is-open { width: min(280px, 78vw); }
   .collab-card-top { padding: 16px; }
