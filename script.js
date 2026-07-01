@@ -237,23 +237,23 @@
   });
 })();
 
-// Collaboration slider
-const slider = document.getElementById('collabSlider');
-const dots = document.querySelectorAll('.dot');
-let current = 0;
+// Collaboration cards — click arrow to expand, only one open at a time
+const collabCards = document.querySelectorAll('.collab-card');
 
-function goToSlide(index) {
-  current = index;
-  slider.style.transform = `translateX(-${index * 100}%)`;
-  dots.forEach((d, i) => d.classList.toggle('active', i === index));
-}
-
-dots.forEach(dot => {
-  dot.addEventListener('click', () => goToSlide(Number(dot.dataset.index)));
+collabCards.forEach(card => {
+  card.querySelector('.collab-card-toggle').addEventListener('click', e => {
+    e.stopPropagation();
+    const wasOpen = card.classList.contains('is-open');
+    collabCards.forEach(c => c.classList.remove('is-open'));
+    if (!wasOpen) card.classList.add('is-open');
+  });
 });
 
-// Auto-advance slider every 4 seconds
-setInterval(() => goToSlide((current + 1) % dots.length), 4000);
+document.addEventListener('click', e => {
+  if (!e.target.closest('.collab-card')) {
+    collabCards.forEach(c => c.classList.remove('is-open'));
+  }
+});
 
 // Active nav link on scroll
 const NAV_HEIGHT = 58;
@@ -288,7 +288,7 @@ sections.forEach(s => observer.observe(s));
 
 // Nav color theme — inverts when scrolling over amber sections
 const nav = document.querySelector('.nav');
-const invertedSections = new Set(['proyectos', 'colaboracion']);
+const invertedSections = new Set(['proyectos']);
 
 function updateNavTheme() {
   let current = sections[0];

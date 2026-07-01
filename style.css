@@ -53,9 +53,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   text-transform: capitalize;
   color: var(--amber);
 }
-.proyectos .section-title,
-.colaboracion .section-num,
-.colaboracion .section-title { color: var(--cream); }
+.proyectos .section-title { color: var(--cream); }
 
 .contenido-tagline {
   display: block;
@@ -423,90 +421,161 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    FORMAS DE COLABORACIÓN
 ══════════════════════════════════════════════════════════════════════ */
 .colaboracion {
-  background: var(--amber);
-}
-.colaboracion .section-num,
-.colaboracion .section-title { color: var(--cream); }
-
-.collab-slider {
-  display: flex;
-  transition: transform 0.5s ease;
-  flex: 1;
-  padding: 48px 85px 0;
-  gap: 0;
-}
-.collab-slide {
-  min-width: 100%;
-  display: flex;
-  gap: 24px;
-  align-items: stretch;
-}
-.collab-card {
-  border: 1.5px solid var(--cream);
-  border-radius: 20px;
-  width: 802px;
-  min-height: 477px;
-  padding: 60px 46px;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-}
-.collab-card-inner { position: relative; z-index: 2; }
-.collab-card-title {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 32px;
-  color: var(--cream);
-  text-transform: capitalize;
-  margin-bottom: 40px;
-}
-.collab-card-body {
-  font-family: var(--font-body);
-  font-size: 20px;
-  color: var(--cream);
-  text-transform: capitalize;
-  max-width: 699px;
-  line-height: 1.5;
-  margin-bottom: 32px;
-}
-.collab-card-collabs {
-  font-family: var(--font-body);
-  font-size: 20px;
-  color: var(--cream);
-  text-transform: capitalize;
-}
-.collab-side-bars {
-  display: flex;
-  gap: 24px;
-  align-items: stretch;
-}
-.side-bar {
   background: var(--cream);
-  border-radius: 20px;
-  width: 142px;
-  min-height: 477px;
 }
-.collab-decorations { position: absolute; inset: 0; pointer-events: none; }
-.deco { position: absolute; }
-.deco-star1 { width: 54px; top: 58px; right: 184px; }
-.deco-star2 { width: 52px; top: 48px; right: 196px; opacity: 0.7; transform: rotate(-41.65deg); }
-.deco-ellipse { width: 54px; top: 58px; right: 14px; }
-.deco-poly1, .deco-poly2 { width: 54px; top: 58px; left: -80px; }
 
-.slider-dots {
+.collab-deck {
+  flex: 1;
+  min-height: 0;
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 24px 0 48px;
+  padding: 40px 85px;
 }
-.dot {
-  width: 10px;
-  height: 10px;
+
+.collab-card {
+  position: relative;
+  width: 320px;
+  height: 100%;
+  max-height: 620px;
+  border-radius: 24px;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.collab-card:not(:first-child) { margin-left: -110px; }
+.collab-card:nth-child(1) { z-index: 4; }
+.collab-card:nth-child(2) { z-index: 3; }
+.collab-card:nth-child(3) { z-index: 2; }
+.collab-card:nth-child(4) { z-index: 1; }
+.collab-card:hover {
+  z-index: 10;
+  transform: translateY(-16px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+}
+.collab-card.is-open {
+  z-index: 20;
+  transform: translateY(-16px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+}
+
+.collab-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.collab-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.3) 100%);
+}
+.collab-card-fill {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: var(--amber);
+  clip-path: circle(0px at calc(100% - 56px) calc(100% - 56px));
+  -webkit-clip-path: circle(0px at calc(100% - 56px) calc(100% - 56px));
+  transition: clip-path 0.5s ease, -webkit-clip-path 0.5s ease;
+}
+.collab-card.is-open .collab-card-fill {
+  clip-path: circle(1500px at calc(100% - 56px) calc(100% - 56px));
+  -webkit-clip-path: circle(1500px at calc(100% - 56px) calc(100% - 56px));
+}
+
+.collab-card-top {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  padding: 28px;
+}
+.collab-card-title {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.15;
+  color: var(--cream);
+  max-width: 190px;
+}
+
+.collab-card-toggle {
+  position: absolute;
+  right: 28px;
+  top: calc(100% - 84px);
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: rgba(255,251,237,0.4);
-  transition: background 0.2s;
+  background: var(--amber);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  transition: top 0.5s ease, background 0.3s ease 0.15s, color 0.3s ease 0.15s;
 }
-.dot.active { background: var(--cream); }
+.collab-card-toggle svg { width: 22px; height: 22px; }
+.collab-card.is-open .collab-card-toggle {
+  top: 28px;
+  background: var(--cream);
+  color: var(--amber);
+}
+
+.collab-card-body {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  padding: 110px 28px 28px;
+  pointer-events: none;
+}
+.collab-card-desc {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--cream);
+  margin: auto 0;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.collab-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.collab-tag {
+  background: var(--cream);
+  color: var(--amber);
+  font-family: var(--font-condensed);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.collab-card.is-open .collab-card-body { pointer-events: auto; }
+.collab-card.is-open .collab-card-desc {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.35s;
+}
+.collab-card.is-open .collab-card-tags {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.5s;
+}
 
 /* ═══════════════════════════════════════════════════════════════════
    CONTACTO
@@ -576,7 +645,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-text { padding: 0 40px 40px; }
   .stats-grid { padding: 40px 60px; }
   .filter-tabs { margin-left: 40px; margin-right: 40px; }
-  .collab-slider { padding: 48px 40px 0; }
+  .collab-deck { padding: 40px; }
   .contact-title { font-size: clamp(60px, 12vw, 160px); }
   .footer { padding: 20px 40px; }
 }
@@ -602,10 +671,28 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .card-medium-2 { width: 200px; height: 240px; }
   .card-landscape { width: 260px; height: 153px; }
   .filter-tabs { margin: 20px 20px 0 auto; }
-  .collab-slider { padding: 24px 20px 0; }
-  .collab-card { width: 100%; padding: 32px 24px; min-height: 360px; }
-  .side-bar { width: 80px; min-height: 360px; }
   .contact-title { font-size: clamp(50px, 15vw, 120px); }
   .footer { padding: 16px 20px; font-size: 16px; }
   .section-header { gap: 20px; }
+
+  .collab-deck { padding: 24px 16px; }
+  .collab-card { width: 150px; max-height: 480px; border-radius: 16px; }
+  .collab-card:not(:first-child) { margin-left: -60px; }
+  .collab-card.is-open { width: min(280px, 78vw); }
+  .collab-card-top { padding: 16px; }
+  .collab-card-title { font-size: 20px; max-width: 110px; }
+  .collab-card-toggle { width: 40px; height: 40px; right: 16px; top: calc(100% - 56px); }
+  .collab-card-toggle svg { width: 16px; height: 16px; }
+  .collab-card.is-open .collab-card-toggle { top: 16px; }
+  .collab-card-body { padding: 64px 16px 16px; }
+  .collab-card-desc { font-size: 13px; }
+  .collab-tag { font-size: 11px; padding: 6px 10px; }
+  .collab-card-fill {
+    clip-path: circle(0px at calc(100% - 36px) calc(100% - 36px));
+    -webkit-clip-path: circle(0px at calc(100% - 36px) calc(100% - 36px));
+  }
+  .collab-card.is-open .collab-card-fill {
+    clip-path: circle(1500px at calc(100% - 36px) calc(100% - 36px));
+    -webkit-clip-path: circle(1500px at calc(100% - 36px) calc(100% - 36px));
+  }
 }
