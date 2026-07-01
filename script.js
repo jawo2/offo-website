@@ -81,7 +81,6 @@
       track.appendChild(clone);
     });
     track.style.animationName = 'none';
-    track.offsetHeight;
     const repeats = Math.max(1, Math.ceil(carousel.offsetWidth / track.scrollWidth));
 
     // Build 2 × repeats sets for seamless -50% loop, always fresh clones
@@ -95,12 +94,15 @@
     }
 
     track.style.animationName = 'none';
-    track.offsetHeight;
     const duration = (track.scrollWidth / 2) / BASE_SPEED;
-    track.style.animationName = 'carousel-scroll';
-    track.style.animationDuration = `${duration}s`;
-    track.style.animationTimingFunction = 'linear';
-    track.style.animationIterationCount = 'infinite';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        track.style.animationName = 'carousel-scroll';
+        track.style.animationDuration = `${duration}s`;
+        track.style.animationTimingFunction = 'linear';
+        track.style.animationIterationCount = 'infinite';
+      });
+    });
 
     attachVideoEvents();
   }
@@ -198,7 +200,6 @@
       track.appendChild(clone);
     });
     track.style.animationName = 'none';
-    track.offsetHeight;
     const repeats = Math.max(1, Math.ceil(carousel.offsetWidth / track.scrollWidth));
 
     // Build 2 × repeats sets for seamless -50% loop, always fresh clones
@@ -212,12 +213,15 @@
     }
 
     track.style.animationName = 'none';
-    track.offsetHeight;
     const duration = (track.scrollWidth / 2) / BASE_SPEED;
-    track.style.animationName = 'carousel-scroll';
-    track.style.animationDuration = `${duration}s`;
-    track.style.animationTimingFunction = 'linear';
-    track.style.animationIterationCount = 'infinite';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        track.style.animationName = 'carousel-scroll';
+        track.style.animationDuration = `${duration}s`;
+        track.style.animationTimingFunction = 'linear';
+        track.style.animationIterationCount = 'infinite';
+      });
+    });
 
     attachVideoEvents();
   }
