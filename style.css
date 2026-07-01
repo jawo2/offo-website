@@ -60,8 +60,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-family: var(--font-condensed);
   font-size: 18px;
   color: var(--cream);
-  margin: 0 0 0 85px;
-  margin-top: 16px;
+  padding: 8px 85px 72px;
+  text-align: center;
 }
 .contenido .divider { margin-top: 24px; }
 
@@ -583,7 +583,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-family: var(--font-condensed);
   font-size: 18px;
   color: var(--amber);
-  opacity: 0.75;
   padding: 8px 85px 72px;
   line-height: 1.5;
   text-align: center;
