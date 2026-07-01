@@ -559,7 +559,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   justify-content: flex-end;
   padding: 20px 85px;
   font-family: var(--font-condensed);
-  font-size: 20px;
+  font-size: 16px;
   color: var(--amber);
   letter-spacing: -0.4px;
 }
