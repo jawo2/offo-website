@@ -237,11 +237,31 @@
   });
 })();
 
-// Collaboration cards — click arrow to expand, only one open at a time
+// Collaboration cards
 const collabCards = document.querySelectorAll('.collab-card');
+const collabDeck = document.getElementById('collabDeck');
 
+// Mobile: activate the card currently centered in the scroll deck
+function activateCenterCollabCard() {
+  if (!collabDeck || window.innerWidth > 768) return;
+  const deckCenter = collabDeck.scrollLeft + collabDeck.offsetWidth / 2;
+  let closest = null;
+  let closestDist = Infinity;
+  collabCards.forEach(card => {
+    const center = card.offsetLeft + card.offsetWidth / 2;
+    const dist = Math.abs(center - deckCenter);
+    if (dist < closestDist) { closestDist = dist; closest = card; }
+  });
+  if (closest) {
+    collabCards.forEach(c => c.classList.remove('is-open'));
+    closest.classList.add('is-open');
+  }
+}
+
+// Desktop: click to expand, click outside to close
 collabCards.forEach(card => {
   card.addEventListener('click', () => {
+    if (window.innerWidth <= 768) return;
     const wasOpen = card.classList.contains('is-open');
     collabCards.forEach(c => c.classList.remove('is-open'));
     if (!wasOpen) card.classList.add('is-open');
@@ -249,17 +269,30 @@ collabCards.forEach(card => {
 });
 
 document.addEventListener('click', e => {
+  if (window.innerWidth <= 768) return;
   if (!e.target.closest('.collab-card')) {
     collabCards.forEach(c => c.classList.remove('is-open'));
   }
 });
 
-if (collabCards.length) collabCards[0].classList.add('is-open');
+if (collabDeck) {
+  collabDeck.addEventListener('scroll', activateCenterCollabCard, { passive: true });
+}
+
+if (collabCards.length) {
+  if (window.innerWidth <= 768) {
+    setTimeout(activateCenterCollabCard, 150);
+  } else {
+    collabCards[0].classList.add('is-open');
+  }
+}
 
 // Active nav link on scroll
 const NAV_HEIGHT = 58;
 const sections = document.querySelectorAll('.section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
+const nav = document.querySelector('.nav');
+const hamburger = document.querySelector('.nav-hamburger');
 
 // Nav jump — instant scroll to section, sets both containers for cross-browser support
 navLinks.forEach(link => {
@@ -267,6 +300,9 @@ navLinks.forEach(link => {
     const href = link.getAttribute('href');
     if (!href || !href.startsWith('#')) return;
     e.preventDefault();
+    // Close mobile hamburger menu
+    nav.classList.remove('nav-open');
+    if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
     const idx = Array.from(sections).findIndex(s => s.id === href.slice(1));
     if (idx < 0) return;
     const targetY = idx * (window.innerHeight - NAV_HEIGHT);
@@ -274,8 +310,13 @@ navLinks.forEach(link => {
     document.body.scrollTop = targetY;
     if (href === '#colaboracion' && collabCards.length) {
       setTimeout(() => {
-        collabCards.forEach(c => c.classList.remove('is-open'));
-        collabCards[0].classList.add('is-open');
+        if (window.innerWidth <= 768) {
+          if (collabDeck) collabDeck.scrollLeft = 0;
+          activateCenterCollabCard();
+        } else {
+          collabCards.forEach(c => c.classList.remove('is-open'));
+          collabCards[0].classList.add('is-open');
+        }
       }, 0);
     }
   });
@@ -293,8 +334,22 @@ const observer = new IntersectionObserver(entries => {
 
 sections.forEach(s => observer.observe(s));
 
+// Mobile hamburger
+if (hamburger) {
+  hamburger.addEventListener('click', e => {
+    e.stopPropagation();
+    nav.classList.toggle('nav-open');
+    hamburger.setAttribute('aria-expanded', nav.classList.contains('nav-open') ? 'true' : 'false');
+  });
+  document.addEventListener('click', e => {
+    if (nav.classList.contains('nav-open') && !nav.contains(e.target)) {
+      nav.classList.remove('nav-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
 // Nav color theme — inverts when scrolling over amber sections
-const nav = document.querySelector('.nav');
 const invertedSections = new Set(['proyectos', 'contenido']);
 
 function updateNavTheme() {

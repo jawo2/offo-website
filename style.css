@@ -136,6 +136,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--amber);
 }
 
+.nav-hamburger { display: none; }
+
 /* Nav inverted (over amber sections) */
 .nav.nav-inverted { background: var(--cream); }
 .nav.nav-inverted .nav-links a { color: var(--amber); }
@@ -662,48 +664,141 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 @media (max-width: 768px) {
-  .nav { flex-wrap: wrap; padding: 20px; gap: 12px; }
-  .nav-links { gap: 12px; font-size: 16px; }
-  .nav-links a { font-size: 16px; }
-  .nav-social { margin-left: auto; }
-  .btn-contact { font-size: 16px; }
+  /* ── Nav: hamburger layout ──────────────────────────────────── */
+  .nav {
+    flex-wrap: nowrap;
+    padding: 0 20px;
+    height: 58px;
+    gap: 0;
+  }
+  .nav-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 22px;
+    height: 16px;
+    padding: 0;
+    flex-shrink: 0;
+    margin-right: 12px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--cream);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .nav.nav-inverted .nav-hamburger span { background: var(--amber); }
+  .nav.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Nav links: hidden by default, dropdown on open */
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 58px;
+    left: 0;
+    right: 0;
+    background: var(--amber);
+    flex-direction: column;
+    padding: 8px 0 20px;
+    gap: 0;
+    z-index: 9999;
+  }
+  .nav.nav-inverted .nav-links { background: var(--cream); }
+  .nav.nav-open .nav-links { display: flex; }
+  .nav-links li { padding: 0; }
+  .nav-links a { display: block; padding: 14px 24px; font-size: 18px; }
+
+  .nav-social { margin-left: auto; gap: 16px; }
+  .btn-contact { font-size: 14px; padding: 4px 10px; margin-left: 10px; }
+
+  /* ── Hero ───────────────────────────────────────────────────── */
   .hero-title { font-size: clamp(100px, 22vw, 200px); }
-  .hero-photo { left: 0; height: 70%; }
+  .hero-photo { left: -10px; top: -80px; height: 78%; }
   .hero-text { padding: 0 20px 40px; }
   .hero-bio { font-size: 16px; }
+
+  /* ── Stats ribbon ───────────────────────────────────────────── */
   .stats-grid { flex-wrap: wrap; padding: 40px 20px; gap: 40px; }
   .stat-item { min-width: 45%; }
-  .cards-grid { padding: 24px 20px; }
-  .card-tall { width: 160px; height: 280px; }
-  .card-medium { height: 280px; }
-  .card-wide { width: 220px; }
-  .card-short { width: 140px; height: 190px; }
-  .card-wide-2 { width: 220px; height: 280px; }
-  .card-medium-2 { width: 200px; height: 240px; }
-  .card-landscape { width: 260px; height: 153px; }
-  .filter-tabs { margin: 20px 20px 0 auto; }
-  .contact-title { font-size: clamp(50px, 15vw, 120px); }
-  .footer { padding: 16px 20px; font-size: 16px; }
-  .section-header { gap: 20px; }
 
-  .collab-deck { padding: 24px 16px; }
-  .collab-card { flex: none; width: 150px; max-height: 480px; border-radius: 16px; }
-  .collab-card:not(:first-child) { margin-left: -60px; }
-  .collab-card.is-open { width: min(280px, 78vw); }
+  /* ── Divider ────────────────────────────────────────────────── */
+  .divider { width: calc(100% - 40px); margin: 24px 0 0 20px; }
+
+  /* ── Filter tabs — centered ─────────────────────────────────── */
+  .filter-tabs { margin: 14px auto 0; }
+  .filter-tabs-right { margin: 14px auto 0; }
+
+  /* ── Carousel cards — 460px height, desktop aspect ratios ─────── */
+  .cards-grid { padding: 24px 20px; }
+  .card-tall { width: 266px; height: 460px; }
+  .card-medium { height: 460px; }
+  .card-wide { width: 363px; }
+  .card-short { width: 170px; height: 230px; }
+  .card-wide-2 { width: 362px; height: 460px; }
+  .card-medium-2 { width: 421px; height: 460px; }
+  .card-landscape { width: 299px; height: 175px; }
+
+  /* ── Colaboración: horizontal scroll with snap ──────────────── */
+  .collab-deck {
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 12vw;
+    gap: 12px;
+    scroll-padding-inline: 12vw;
+    scrollbar-width: none;
+  }
+  .collab-deck::-webkit-scrollbar { display: none; }
+
+  .collab-card {
+    flex: none;
+    width: 76vw;
+    max-height: 460px;
+    border-radius: 20px;
+    scroll-snap-align: center;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .collab-card:not(:first-child) { margin-left: 0; }
+  .collab-card.is-open {
+    width: 76vw;
+    transform: none !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.18) !important;
+  }
+
   .collab-card-top { padding: 16px; }
-  .collab-card-title { font-size: 20px; max-width: 110px; }
-  .collab-card-toggle { width: 40px; height: 40px; right: 16px; top: calc(100% - 56px); }
+  .collab-card-title { font-size: 22px; }
+  .collab-card-toggle { width: 40px; height: 40px; right: 20px; top: calc(100% - 60px); }
   .collab-card-toggle svg { width: 16px; height: 16px; }
-  .collab-card.is-open .collab-card-toggle { top: 16px; }
-  .collab-card-body { padding: 64px 16px 16px; }
-  .collab-card-desc { font-size: 13px; }
-  .collab-tag { font-size: 11px; padding: 6px 10px; }
+  .collab-card.is-open .collab-card-toggle { top: 20px; }
+  .collab-card-body { padding: 64px 20px 20px; }
+  .collab-card-desc { font-size: 14px; }
+  .collab-tag { font-size: 12px; padding: 6px 12px; }
+
   .collab-card-fill {
-    clip-path: circle(0px at calc(100% - 36px) calc(100% - 36px));
-    -webkit-clip-path: circle(0px at calc(100% - 36px) calc(100% - 36px));
+    clip-path: circle(0px at calc(100% - 40px) calc(100% - 40px));
+    -webkit-clip-path: circle(0px at calc(100% - 40px) calc(100% - 40px));
   }
   .collab-card.is-open .collab-card-fill {
-    clip-path: circle(1500px at calc(100% - 36px) calc(100% - 36px));
-    -webkit-clip-path: circle(1500px at calc(100% - 36px) calc(100% - 36px));
+    clip-path: circle(1500px at calc(100% - 40px) calc(100% - 40px));
+    -webkit-clip-path: circle(1500px at calc(100% - 40px) calc(100% - 40px));
   }
+
+  .collab-footnote { padding: 4px 20px 64px; font-size: 18px; }
+
+  /* ── Section headers ────────────────────────────────────────── */
+  .section-header { gap: 20px; }
+
+  /* ── Contacto — info left-aligned with divider ──────────────── */
+  .contact-title { font-size: clamp(50px, 15vw, 120px); }
+  .contact-info { padding: 44px 0 0 20px; }
+
+  .footer { padding: 16px 20px; font-size: 16px; }
 }
