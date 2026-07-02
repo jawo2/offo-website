@@ -21,6 +21,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 100%;
   height: calc(100vh - 58px);
   height: calc(100svh - 58px);
+  height: calc(100dvh - 58px);
   position: sticky;
   top: 58px;
   overflow: hidden;
@@ -642,6 +643,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   justify-content: flex-end;
   padding: 20px 85px;
+  padding-bottom: max(20px, calc(20px + env(safe-area-inset-bottom, 0px)));
   font-family: var(--font-condensed);
   font-size: 16px;
   color: var(--amber);
@@ -727,6 +729,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   /* ── Divider ────────────────────────────────────────────────── */
   .divider { width: calc(100% - 40px); margin: 24px 0 0 20px; }
+
+  /* ── Carousel — top-align track so tall viewports don't gap ── */
+  .cards-carousel { align-items: flex-start; padding: 16px 0 0; }
 
   /* ── Filter tabs — centered ─────────────────────────────────── */
   .filter-tabs { margin: 14px auto 0; }
