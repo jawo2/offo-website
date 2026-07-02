@@ -719,7 +719,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   /* ── Hero ───────────────────────────────────────────────────── */
   .hero-title { font-size: clamp(100px, 22vw, 200px); }
-  .hero-photo { left: 10px; top: 170px; height: 35%; }
+  .hero-photo { left: 30px; top: 100px; height: 35%; }
   .hero-text { padding: 0 20px 40px; }
   .hero-bio { font-size: 16px; margin-top: 20px; text-align: justify; }
   .hero-sep { align-self: stretch; height: auto; }
@@ -740,25 +740,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     align-items: flex-start;
+    gap: 12px;
     padding: 16px 20px;
   }
   .cards-carousel::-webkit-scrollbar { display: none; }
-  .cards-track { animation: none !important; gap: 12px; }
+  .cards-track { display: contents !important; animation: none !important; }
   .card { scroll-snap-align: start; flex-shrink: 0; }
 
   /* ── Filter tabs — centered ─────────────────────────────────── */
   .filter-tabs { margin: 14px auto 0; }
   .filter-tabs-right { margin: 14px auto 0; }
 
-  /* ── Carousel cards — 460px height, desktop aspect ratios ─────── */
+  /* ── Carousel cards — 380px height, desktop aspect ratios ─────── */
   .cards-grid { padding: 24px 20px; }
-  .card-tall { width: 266px; height: 460px; }
-  .card-medium { height: 460px; }
-  .card-wide { width: 363px; }
-  .card-short { width: 170px; height: 230px; }
-  .card-wide-2 { width: 362px; height: 460px; }
-  .card-medium-2 { width: 421px; height: 460px; }
-  .card-landscape { width: 299px; height: 175px; }
+  .card-tall { width: 226px; height: 380px; }
+  .card-medium { height: 380px; }
+  .card-wide { width: 308px; }
+  .card-short { width: 144px; height: 195px; }
+  .card-wide-2 { width: 307px; height: 380px; }
+  .card-medium-2 { width: 357px; height: 380px; }
+  .card-landscape { width: 254px; height: 148px; }
 
   /* ── Colaboración: horizontal scroll with snap ──────────────── */
   .collab-deck {
@@ -768,7 +769,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    padding: 16px 12vw;
+    padding: 16px 12vw 40px;
     gap: 12px;
     scroll-padding-inline: 12vw;
     scrollbar-width: none;
@@ -809,7 +810,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     -webkit-clip-path: circle(1500px at calc(100% - 40px) calc(100% - 40px));
   }
 
-  .collab-footnote { padding: 4px 20px 64px; font-size: 18px; }
+  .collab-footnote { padding: 20px 20px 64px; font-size: 18px; }
 
   /* ── Section headers ────────────────────────────────────────── */
   .section-header { gap: 20px; }
@@ -817,6 +818,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* ── Contacto — info left-aligned with divider ──────────────── */
   .contact-title { font-size: clamp(50px, 15vw, 120px); }
   .contact-info { padding: 44px 0 0 20px; }
+  .contact-role { white-space: normal; }
 
   .footer { padding: 16px 20px; font-size: 16px; }
 }
