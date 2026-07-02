@@ -718,8 +718,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .btn-contact { font-size: 14px; padding: 4px 10px; margin-left: 10px; }
 
   /* ── Hero ───────────────────────────────────────────────────── */
-  .hero-title { font-size: clamp(100px, 22vw, 200px); }
-  .hero-photo { left: 30px; top: 100px; height: 35%; }
+  .hero-title { font-size: clamp(100px, 22vw, 200px); top: 35%; }
+  .hero-photo { left: 30px; top: 30px; height: 35%; }
   .hero-text { padding: 0 20px 40px; }
   .hero-bio { font-size: 16px; margin-top: 20px; text-align: justify; }
   .hero-sep { align-self: stretch; height: auto; }
@@ -789,7 +789,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .collab-card.is-open {
     width: 76vw;
     transform: none !important;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.18) !important;
+    box-shadow: none !important;
+    filter: drop-shadow(0 12px 30px rgba(0,0,0,0.22));
   }
 
   .collab-card-top { padding: 16px; }
@@ -811,6 +812,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   .collab-footnote { padding: 20px 20px 64px; font-size: 18px; }
+  .contenido-tagline { padding: 8px 20px 40px; }
 
   /* ── Section headers ────────────────────────────────────────── */
   .section-header { gap: 20px; }
@@ -818,7 +820,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* ── Contacto — info left-aligned with divider ──────────────── */
   .contact-title { font-size: clamp(50px, 15vw, 120px); }
   .contact-info { padding: 44px 0 0 20px; }
-  .contact-role { white-space: normal; }
+  .contact-role { white-space: normal; line-height: 1.2; }
 
   .footer { padding: 16px 20px; font-size: 16px; }
 }
