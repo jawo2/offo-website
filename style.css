@@ -719,9 +719,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   /* ── Hero ───────────────────────────────────────────────────── */
   .hero-title { font-size: clamp(100px, 22vw, 200px); }
-  .hero-photo { left: -10px; top: -80px; height: 78%; }
+  .hero-photo { left: 10px; top: 170px; height: 35%; }
   .hero-text { padding: 0 20px 40px; }
-  .hero-bio { font-size: 16px; }
+  .hero-bio { font-size: 16px; margin-top: 20px; text-align: justify; }
+  .hero-sep { align-self: stretch; height: auto; }
 
   /* ── Stats ribbon ───────────────────────────────────────────── */
   .stats-grid { flex-wrap: wrap; padding: 40px 20px; gap: 40px; }
@@ -784,7 +785,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .collab-card-toggle svg { width: 16px; height: 16px; }
   .collab-card.is-open .collab-card-toggle { top: 20px; }
   .collab-card-body { padding: 64px 20px 20px; }
-  .collab-card-desc { font-size: 14px; }
+  .collab-card-desc { font-size: 14px; text-align: justify; }
   .collab-tag { font-size: 12px; padding: 6px 12px; }
 
   .collab-card-fill {
