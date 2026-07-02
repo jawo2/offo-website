@@ -718,8 +718,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .btn-contact { font-size: 14px; padding: 4px 10px; margin-left: 10px; }
 
   /* ── Hero ───────────────────────────────────────────────────── */
-  .hero-title { font-size: clamp(100px, 22vw, 200px); top: 35%; }
-  .hero-photo { left: 30px; top: 30px; height: 35%; }
+  .hero-title { font-size: clamp(100px, 22vw, 200px); top: 28%; }
+  .hero-photo { left: 30px; top: -10px; height: 38%; }
   .hero-text { padding: 0 20px 40px; }
   .hero-bio { font-size: 16px; margin-top: 20px; text-align: justify; }
   .hero-sep { align-self: stretch; height: auto; }
@@ -745,7 +745,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
   .cards-carousel::-webkit-scrollbar { display: none; }
   .cards-track { display: contents !important; animation: none !important; }
-  .card { scroll-snap-align: start; flex-shrink: 0; }
+  .card { scroll-snap-align: start; flex-shrink: 0; box-shadow: none; }
 
   /* ── Filter tabs — centered ─────────────────────────────────── */
   .filter-tabs { margin: 14px auto 0; }
@@ -773,6 +773,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     gap: 12px;
     scroll-padding-inline: 12vw;
     scrollbar-width: none;
+    filter: drop-shadow(0 16px 20px rgba(0,0,0,0.18));
   }
   .collab-deck::-webkit-scrollbar { display: none; }
 
@@ -790,7 +791,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: 76vw;
     transform: none !important;
     box-shadow: none !important;
-    filter: drop-shadow(0 12px 30px rgba(0,0,0,0.22));
+    filter: none;
   }
 
   .collab-card-top { padding: 16px; }
