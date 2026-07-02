@@ -731,8 +731,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* ── Divider ────────────────────────────────────────────────── */
   .divider { width: calc(100% - 40px); margin: 24px 0 0 20px; }
 
-  /* ── Carousel — top-align track so tall viewports don't gap ── */
-  .cards-carousel { align-items: flex-start; padding: 16px 0 0; }
+  /* ── Carousel — scroll-snap gallery on mobile ─────────────── */
+  .cards-carousel {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    align-items: flex-start;
+    padding: 16px 20px;
+  }
+  .cards-carousel::-webkit-scrollbar { display: none; }
+  .cards-track { animation: none !important; gap: 12px; }
+  .card { scroll-snap-align: start; flex-shrink: 0; }
 
   /* ── Filter tabs — centered ─────────────────────────────────── */
   .filter-tabs { margin: 14px auto 0; }

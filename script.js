@@ -60,9 +60,34 @@
     });
   }
 
+  function buildMobileCarousel(filter) {
+    track.innerHTML = '';
+    track.style.animationName = 'none';
+    track.style.animationDuration = '';
+    track.style.transform = '';
+    track.style.gap = '12px';
+
+    const matching = filter === 'all'
+      ? sourceCards
+      : sourceCards.filter(c => c.dataset.filter === filter);
+
+    if (!matching.length) return;
+
+    matching.forEach(c => {
+      track.appendChild(c.cloneNode(true));
+    });
+
+    attachVideoEvents();
+  }
+
   function buildCarousel(filter) {
     playingVideo = null;
     track.style.animationPlayState = '';
+
+    if (window.innerWidth <= 768) {
+      buildMobileCarousel(filter);
+      return;
+    }
 
     const matching = filter === 'all'
       ? sourceCards
@@ -179,9 +204,34 @@
     });
   }
 
+  function buildMobileCarousel(filter) {
+    track.innerHTML = '';
+    track.style.animationName = 'none';
+    track.style.animationDuration = '';
+    track.style.transform = '';
+    track.style.gap = '12px';
+
+    const matching = filter === 'all'
+      ? sourceCards
+      : sourceCards.filter(c => c.dataset.filter === filter);
+
+    if (!matching.length) return;
+
+    matching.forEach(c => {
+      track.appendChild(c.cloneNode(true));
+    });
+
+    attachVideoEvents();
+  }
+
   function buildCarousel(filter) {
     playingVideo = null;
     track.style.animationPlayState = '';
+
+    if (window.innerWidth <= 768) {
+      buildMobileCarousel(filter);
+      return;
+    }
 
     const matching = filter === 'all'
       ? sourceCards
